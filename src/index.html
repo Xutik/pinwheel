@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Frame Balloons and Pinwheels</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+      // Robust scale-on-interact for GLTF models
+      AFRAME.registerComponent('scale-on-interact', {
+        schema: {type: 'vec3', default: {x:6, y:6, z:6}}, // scale when hovered/clicked
+        init: function () {
+          const el = this.el;
+          const originalScale = {x:2.5, y:2.5, z:2.5}; // <-- set your default here
+
+          el.addEventListener('mouseenter', () => {
+            el.setAttribute('scale', this.data);
+          });
+          el.addEventListener('mouseleave', () => {
+            el.setAttribute('scale', originalScale);
+          });
+          el.addEventListener('click', () => {
+            el.setAttribute('scale', this.data);
+            setTimeout(() => {
+              el.setAttribute('scale', originalScale);
+            }, 400);
+          });
+        }
+      });
+    </script>
+</head>
+<body>
+    <button id="toggle-music-btn" style="position: absolute; z-index: 10; top: 20px; left: 20px;">Toggle Music</button>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="pinwheelModel" src="assets/object_pinwheel.glb"></a-asset-item>
+            <audio id="bg-music" src="assets/music.m4a"></audio>
+            <img id="skyTexture" src="assets/Sky_baloons.jpg">
+        </a-assets>
+        <a-sky src="#skyTexture"></a-sky>
+        <a-entity camera look-controls position="0 1.6 0"
+          cursor="rayOrigin: mouse"
+          raycaster="objects: .interactive"></a-entity>
+
+     <!-- Pinwheels with interactive tags using GLB model -->
+        <a-entity id="pinwheel-v" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-4 0 -5" data-tag="v" scale-on-interact="x:6; y:6; z:6"
+          onclick="window.location.href='viji.html'">
+            <a-text value="Vijaya" align="center" position="0 1 0" color="violet"
+              class="clickable"
+              event-set__enter="_event: mouseenter; color: orange"
+              event-set__leave="_event: mouseleave; color: violet"></a-text>
+        </a-entity>
+        <a-entity id="pinwheel-s" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-1 0 -5" data-tag="s" scale-on-interact="x:6; y:6; z:6"
+          onclick="window.location.href='shanti.html'">
+            <a-text value="Shanti" align="center" position="0 1 0" color="pink"
+              class="clickable"
+              event-set__enter="_event: mouseenter; color: orange"
+              event-set__leave="_event: mouseleave; color: pink"></a-text>
+        </a-entity>
+        <a-entity id="pinwheel-y" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="1 0 -5" data-tag="y" scale-on-interact="x:6; y:6; z:6"
+          onclick="window.location.href='yali.html'">
+            <a-text value="Yali" align="center" position="0 1 0" color="green"
+              class="clickable"
+              event-set__enter="_event: mouseenter; color: orange"
+              event-set__leave="_event: mouseleave; color: green"></a-text>
+        </a-entity>
+        <a-entity id="pinwheel-k" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="4 0 -5" data-tag="k" scale-on-interact="x:6; y:6; z:6"
+          onclick="window.location.href='ksenia.html'">
+            <a-text value="Ksenia" align="center" position="0 1 0" color="yellow"
+              class="clickable"
+              event-set__enter="_event: mouseenter; color: orange"
+              event-set__leave="_event: mouseleave; color: yellow"></a-text>
+        </a-entity>
+
+        <a-sound id="bgSound" src="#bg-music" autoplay="true" loop="true"></a-sound>
+    </a-scene>
+    <script>
+        const btn = document.getElementById('toggle-music-btn');
+        const scene = document.querySelector('a-scene');
+        let isPlaying = true;
+
+        btn.addEventListener('click', () => {
+            const sound = scene.querySelector('#bgSound');
+            if (isPlaying) {
+                sound.components.sound.pauseSound();
+                btn.textContent = 'Play Music';
+            } else {
+                sound.components.sound.playSound();
+                btn.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>

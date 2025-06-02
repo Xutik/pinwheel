@@ -1,0 +1,14 @@
+{
+  "name": "team-space",
+  "version": "1.0.0",
+  "description": "A-Frame project featuring a scene with balloons and interactive pinwheels.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "http-server src"
+  },
+  "dependencies": {
+    "aframe": "^1.2.0"
+  },
+  "author": "",
+  "license": "MIT"
+}
