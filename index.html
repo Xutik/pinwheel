@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A-Frame Balloons and Pinwheels</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="js/main.js" defer></script>
     <script>
       // Robust scale-on-interact for GLTF models
       AFRAME.registerComponent('scale-on-interact', {
@@ -43,35 +42,31 @@
           cursor="rayOrigin: mouse"
           raycaster="objects: .interactive"></a-entity>
 
+        <a-text 
+            value="My Childhood"
+            position="0 5 -5"
+            align="center"
+            color="indigo"
+            width="12"
+        </a-text>
+        
      <!-- Pinwheels with interactive tags using GLB model -->
-        <a-entity id="pinwheel-v" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-4 0 -5" data-tag="v" scale-on-interact="x:6; y:6; z:6"
-          onclick="window.location.href='viji.html'">
-            <a-text value="Vijaya" align="center" position="0 1 0" color="violet"
-              class="clickable"
-              event-set__enter="_event: mouseenter; color: orange"
-              event-set__leave="_event: mouseleave; color: violet"></a-text>
-        </a-entity>
-        <a-entity id="pinwheel-s" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-1 0 -5" data-tag="s" scale-on-interact="x:6; y:6; z:6"
-          onclick="window.location.href='shanti.html'">
-            <a-text value="Shanti" align="center" position="0 1 0" color="pink"
-              class="clickable"
-              event-set__enter="_event: mouseenter; color: orange"
-              event-set__leave="_event: mouseleave; color: pink"></a-text>
-        </a-entity>
-        <a-entity id="pinwheel-y" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="1 0 -5" data-tag="y" scale-on-interact="x:6; y:6; z:6"
-          onclick="window.location.href='yali.html'">
-            <a-text value="Yali" align="center" position="0 1 0" color="green"
-              class="clickable"
-              event-set__enter="_event: mouseenter; color: orange"
-              event-set__leave="_event: mouseleave; color: green"></a-text>
-        </a-entity>
-        <a-entity id="pinwheel-k" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="4 0 -5" data-tag="k" scale-on-interact="x:6; y:6; z:6"
-          onclick="window.location.href='ksenia.html'">
-            <a-text value="Ksenia" align="center" position="0 1 0" color="yellow"
-              class="clickable"
-              event-set__enter="_event: mouseenter; color: orange"
-              event-set__leave="_event: mouseleave; color: yellow"></a-text>
-        </a-entity>
+    <a-entity id="pinwheel-v" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-4 0 -5" data-tag="v" scale-on-interact="x:6; y:6; z:6"
+      onclick="window.open('https://xrchildhoodpaintingroom.netlify.app/', '_blank')">
+        <a-text value="Vijaya" align="center" position="0 1 0" color="violet" class="clickable"></a-text>
+    </a-entity>
+    <a-entity id="pinwheel-s" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="-1 0 -5" data-tag="s" scale-on-interact="x:6; y:6; z:6"
+      onclick="window.open('https://mychildhoodmemories.netlify.app/', '_blank')">
+        <a-text value="Shanti" align="center" position="0 1 0" color="pink" class="clickable"></a-text>
+    </a-entity>
+    <a-entity id="pinwheel-y" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="1 0 -5" data-tag="y" scale-on-interact="x:6; y:6; z:6"
+      onclick="window.open('https://childwood.netlify.app/', '_blank')">
+        <a-text value="Yali" align="center" position="0 1 0" color="green" class="clickable"></a-text>
+    </a-entity>
+    <a-entity id="pinwheel-k" class="pinwheel interactive" gltf-model="#pinwheelModel" scale="2.5 2.5 2.5" position="4 0 -5" data-tag="k" scale-on-interact="x:6; y:6; z:6"
+      onclick="window.open('https://xutixchildhood.netlify.app/', '_blank')">
+        <a-text value="Ksenia" align="center" position="0 1 0" color="yellow" class="clickable"></a-text>
+    </a-entity>
 
         <a-sound id="bgSound" src="#bg-music" autoplay="true" loop="true"></a-sound>
     </a-scene>
